@@ -44,23 +44,8 @@ public class LifeCycleDemoTest {
         assertEquals(Collections.emptyList(), classInitList);
         assertEquals(Collections.emptyList(), beforeInitList);
 
-        classInitList.add("A1");
-        classInitList.add("A3");
-        classInitList.add("A5");
-        classInitList.add("A7");
-        classInitList.add("A9");
-
+        classInitList.add("A");
         beforeInitList.add("B");
-
-        org.assertj.core.api.Assertions.assertThat(classInitList)
-                .hasSize(5)
-                .allMatch(s -> s.startsWith("A"), "starts with A")
-                .as("ends with 5").anyMatch(s -> s.endsWith("5"))
-                .as("length == 2").allSatisfy(s -> assertEquals(2, s.length()))
-                .contains("A1", "A5", "A3")
-                .doesNotContain("A2", "B")
-                .containsOnly("A1", "A9", "A7", "A5", "A3")
-                .containsExactly("A1", "A3", "A5", "A7", "A9");
     }
 
     @Test
@@ -69,11 +54,6 @@ public class LifeCycleDemoTest {
         assertEquals(Collections.emptyList(), beforeInitList);
 
         classInitList.add("a");
-        beforeInitList.add("b0");
-        beforeInitList.add("b2");
-        beforeInitList.add("b4");
-        beforeInitList.add("b6");
-        beforeInitList.add("b8");
-
+        beforeInitList.add("b");
     }
 }

@@ -1,14 +1,13 @@
 package io.xp.kata.example;
 
 import org.assertj.core.api.Condition;
-import org.assertj.core.util.Maps;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatObject;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AssertJDemoTest {
     @Test
@@ -31,6 +30,20 @@ public class AssertJDemoTest {
                 .isBetween(5,8);
     }
 
+    @Test
+    void collection_assertions() {
+        List<String> strings = Arrays.asList("A1", "A3", "A5", "A7", "A9");
+        assertThat(strings)
+                .hasSize(5)
+                .allMatch(s -> s.startsWith("A"), "starts with A")
+                .as("ends with 5").anyMatch(s -> s.endsWith("5"))
+                .as("length == 2").allSatisfy(s -> assertEquals(2, s.length()))
+                .contains("A1", "A5", "A3")
+                .doesNotContain("A2", "B")
+                .containsOnly("A1", "A9", "A7", "A5", "A3")
+                .containsExactly("A1", "A3", "A5", "A7", "A9");
+    }
+
     static class HardToComparePojo {
         int id;
         String name;
@@ -46,7 +59,7 @@ public class AssertJDemoTest {
     }
 
     @Test
-    void collection_assertions() {
+    void complex_collection_assertions() {
         Map<String, Object> attrs = new HashMap<>();
         attrs.put("attr1", 11);
         attrs.put("attr2", LocalDate.of(2021, 1, 1));
