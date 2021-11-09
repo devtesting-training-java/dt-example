@@ -9,7 +9,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ListTest {
+public class LifeCycleDemoTest {
 
     private static List<String> staticList = new ArrayList<>();
     private List<String> classInitList = new ArrayList<>();
