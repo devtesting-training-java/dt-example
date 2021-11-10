@@ -1,6 +1,5 @@
 package io.xp.kata;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -74,16 +73,19 @@ class LimitsTest {
 
     public static Stream<Arguments> argsExpectWithIllegalConfig() {
         return Stream.of(
-                Arguments.arguments(new String[]{}, 1, 100),
-                Arguments.arguments(new String[]{"3"}, 1, 3),
-                Arguments.arguments(new String[]{"4", "7"}, 4, 7)
+                Arguments.arguments(new String[]{}, config("1,2", "10"), 1, 100),
+                Arguments.arguments(new String[]{}, config("2", "10.1"), 1, 100),
+                Arguments.arguments(new String[]{"3"}, config("a", "10"), 1, 3),
+                Arguments.arguments(new String[]{"3"}, config("5", "10.2"), 1, 3),
+                Arguments.arguments(new String[]{"4", "7"}, config("", "10"), 4, 7),
+                Arguments.arguments(new String[]{"4", "7"}, config("5", "10.2"), 4, 7)
         );
     }
 
     @ParameterizedTest
     @MethodSource("argsExpectWithIllegalConfig")
-    void testConstructor_should_task_default_config_1_100_when_illegal_config(String[] args, int from, int to) {
-        Limits limits = new Limits(config("1.1", "2"), args);
+    void testConstructor_should_task_default_config_1_100_when_illegal_config(String[] args, Properties config, int from, int to) {
+        Limits limits = new Limits(config, args);
         assertEquals(limits.getFrom(), from);
         assertEquals(limits.getTo(), to);
     }

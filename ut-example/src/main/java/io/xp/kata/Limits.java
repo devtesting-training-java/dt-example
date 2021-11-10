@@ -28,8 +28,10 @@ class Limits {
 
     private void readConfig(Properties config) {
         try {
-            from = Integer.parseInt(config.getProperty("from"));
-            to = Integer.parseInt(config.getProperty("to"));
+            int from = Integer.parseInt(config.getProperty("from"));
+            int to = Integer.parseInt(config.getProperty("to"));
+            this.from = from;
+            this.to = to;
             hasConfigError = false;
         } catch (NumberFormatException e) {
             hasConfigError = true;
