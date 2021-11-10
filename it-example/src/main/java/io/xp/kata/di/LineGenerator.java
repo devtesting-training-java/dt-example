@@ -11,10 +11,14 @@ public class LineGenerator {
     @Autowired
     private Limits fromTo;
 
+    @Autowired
+    private FizzBuzz fizzBuzz;
+
     public List<String> generate() {
         List<String> lines = new ArrayList<String>();
-        FizzBuzz fizzBuzz = new FizzBuzz();
-        for (int i = fromTo.getFrom(); i <= fromTo.getTo(); i++) {
+        int from = fromTo.getFrom();
+        int to = fromTo.getTo();
+        for (int i = from; i <= to; i++) {
             lines.add(fizzBuzz.transform(i));
         }
         return lines;

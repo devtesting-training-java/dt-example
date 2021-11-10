@@ -1,5 +1,8 @@
 package io.xp.kata.di;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class FizzBuzz {
     public String transform(int i) {
         if (i % 15 == 0) {
