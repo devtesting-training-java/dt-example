@@ -1,0 +1,16 @@
+ {
+    "id" : "1",
+    "name" : "name1",
+    "attributes" : {
+      "request" : {
+        "value" : "1"
+      },
+      "response" : {
+        "original_value" : "1",
+        "token" : "134567899ADFE"
+      }
+    },
+    "result" : "1",
+    "generatedTime" : 1536549922077,
+    "success" : true
+  }

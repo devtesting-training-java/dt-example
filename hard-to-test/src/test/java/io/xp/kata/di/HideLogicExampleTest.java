@@ -10,22 +10,17 @@ import org.mockito.MockedConstruction;
 import org.mockito.MockedStatic;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
 class HideLogicExampleTest {
-    LineGenerator generator = new LineGenerator();
+    private LineGenerator generator = new LineGenerator();
+
     private MockedStatic<Limits> limitsMockedStatic;
     private MockedConstruction<FizzBuzz> fizzBuzzMocked;
-
-    @BeforeEach
-    void setUp() {
-    }
 
     @AfterEach
     void tearDown() {
