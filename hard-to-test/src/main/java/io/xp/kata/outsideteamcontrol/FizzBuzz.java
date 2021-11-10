@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,7 +11,7 @@ public class FizzBuzz {
 
     private ObjectMapper objectMapper = new ObjectMapper();
 
-    public String transform(int i) {
+    public final String transform(int i) {
         String result = doTransform(i);
         ComplexFizzBuzzDto dto = new ComplexFizzBuzzDto();
         HashMap<String, Map<String, String>> attributes = new HashMap<>();

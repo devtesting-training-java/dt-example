@@ -1,6 +1,6 @@
 package io.xp.kata.di;
 
-public class Limits {
+public final class Limits {
     private static Limits instance;
 
     private int from = 1;
