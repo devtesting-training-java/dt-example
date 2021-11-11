@@ -26,8 +26,8 @@ class GoodExampleTest {
 
     @AfterEach
     void tearDown() {
-        fizzBuzzMocked.close();
-        limitsMockedStatic.close();
+        if (fizzBuzzMocked != null) fizzBuzzMocked.close();
+        if (limitsMockedStatic != null) limitsMockedStatic.close();
     }
 
     @Test
