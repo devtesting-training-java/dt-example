@@ -20,6 +20,7 @@
         <module>ut-example</module>
         <module>it-example</module>
         <module>hard-to-test</module>
+        <module>mocktools-example</module>
     </modules>
 </project>
 

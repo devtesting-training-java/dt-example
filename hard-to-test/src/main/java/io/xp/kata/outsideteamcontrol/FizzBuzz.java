@@ -12,6 +12,7 @@ public class FizzBuzz {
     private ObjectMapper objectMapper = new ObjectMapper();
 
     public final String transform(int i) {
+        HardToTestUtil.throwExceptionInTest();
         String result = doTransform(i);
         ComplexFizzBuzzDto dto = new ComplexFizzBuzzDto();
         HashMap<String, Map<String, String>> attributes = new HashMap<>();
