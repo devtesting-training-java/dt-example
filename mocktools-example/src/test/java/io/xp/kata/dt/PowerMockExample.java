@@ -6,6 +6,7 @@ import io.xp.kata.outsideteamcontrol.FizzBuzz;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.Spy;
 import org.powermock.core.classloader.annotations.PrepareEverythingForTest;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.core.classloader.annotations.PrepareOnlyThisForTest;
@@ -16,13 +17,14 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
-import static org.powermock.api.mockito.PowerMockito.mockStatic;
-import static org.powermock.api.mockito.PowerMockito.whenNew;
+import static org.powermock.api.mockito.PowerMockito.*;
 
 @RunWith(PowerMockRunner.class)
 public class PowerMockExample {
+    @Spy
     LineGenerator generator = new LineGenerator();
     @Mock
     private Limits limits;
@@ -39,9 +41,13 @@ public class PowerMockExample {
         when(limits.getTo()).thenReturn(17);
 
         whenNew(FizzBuzz.class).withAnyArguments().thenReturn(fizzbuzz);
-        when(fizzbuzz.transform(anyInt())).thenReturn("{}");
+        when(fizzbuzz.transform(anyInt())).thenReturn("{\"result\": \"*\"}");
+
+        doReturn(true).when(generator, "checkDto", any());
 
         List<String> lines = generator.generate();
-        assertEquals(Collections.nCopies(5, ""), lines);
+
+        assertEquals(Collections.nCopies(5, "*"), lines);
     }
+
 }
